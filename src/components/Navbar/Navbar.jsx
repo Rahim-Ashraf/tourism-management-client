@@ -1,7 +1,21 @@
+import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../Provider/Provider";
 
 
 const Navbar = () => {
+    const [hoverEffect, setHoverEffect] = useState(false)
+    const { user, logOut } = useContext(AuthContext)
+    const handleLogOut = () => {
+        logOut()
+    }
+
+    const handleMouseOver = () => {
+        setHoverEffect(true)
+    }
+    const handleMouseOut = () => {
+        setHoverEffect(false)
+    }
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start">
@@ -26,9 +40,22 @@ const Navbar = () => {
                     <NavLink>My List</NavLink>
                 </ul>
             </div>
-            <div className="navbar-end gap-2">
-                <Link to={"/login"} className="btn">Login</Link>
-                <Link to={"/register"} className="btn">Register</Link>
+            <div className="navbar-end">
+                {user ? <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className="relative mr-16">
+                    <div className="avatar cursor-pointer">
+                        <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                            <img src={user?.photoURL} />
+                        </div>
+                    </div>
+                    <div className={hoverEffect?"block absolute w-28":"hidden absolute w-28"}>
+                        <p className="bg-gray-700 rounded p-1">{user?.displayName}</p>
+                        <button onClick={handleLogOut} className="btn mt-2">Log out</button>
+                    </div>
+                </div>
+                    : <div className="flex gap-2">
+                        <Link to={"/login"} className="btn">Login</Link>
+                        <Link to={"/register"} className="btn">Register</Link>
+                    </div>}
             </div>
         </div>
     );

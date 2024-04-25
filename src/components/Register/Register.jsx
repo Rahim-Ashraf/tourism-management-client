@@ -1,16 +1,19 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { IoMdEyeOff } from "react-icons/io";
 import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Provider/Provider";
+import { toast } from "react-toastify";
 
 
 const Register = () => {
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
+    const { emailRegister, updateUser } = useContext(AuthContext);
     const [showPass, setShowPass] = useState(true);
     const [registerError, setRegisterError] = useState("")
     const handleEmailRegister = (e) => {
         e.preventDefault();
-        setRegisterError("");
+        // setRegisterError("");
         const email = e.target.email.value;
         const password = e.target.password.value;
         const name = e.target.name.value;
@@ -29,18 +32,19 @@ const Register = () => {
             return
         }
 
-        // register(email, password)
-        //     .then(res => {
-        //         updateUser(name, photoURL)
-        //             .then(res => console.log("succeesss"))
-        //         const registerSuccess = () => toast.success("Registerd successfully");
-        //         registerSuccess()
-        //         navigate("/")
-        //     })
-        //     .catch(err => {
-        //         const registerError = () => toast.error("This emai already exist");
-        //         registerError()
-        //     })
+        emailRegister(email, password, name, photoURL)
+            .then(res => {
+                updateUser(name, photoURL)
+                    .then(result => console.log("user updated"))
+                    .catch(error => console.log("user not updated"))
+                const registerSuccess = () => toast.success("Registerd successfully");
+                registerSuccess()
+                navigate("/")
+            })
+            .catch(err => {
+                const registerError = () => toast.error("Registration faild");
+                registerError()
+            })
     }
     return (
         <div data-aos="fade-up" data-aos-duration="2000" className="card  shadow-2xl bg-base-100 w-full md:w-2/3 lg:w-1/2 mx-auto">
