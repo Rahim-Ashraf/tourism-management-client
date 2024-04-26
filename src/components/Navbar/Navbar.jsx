@@ -4,8 +4,9 @@ import { AuthContext } from "../../Provider/Provider";
 
 
 const Navbar = () => {
-    const [hoverEffect, setHoverEffect] = useState(false)
-    const { user, logOut } = useContext(AuthContext)
+    const [hoverEffect, setHoverEffect] = useState(false);
+    const { user, logOut } = useContext(AuthContext);
+    console.log(user)
     const handleLogOut = () => {
         logOut()
     }
@@ -27,7 +28,7 @@ const Navbar = () => {
                         <NavLink>Home</NavLink>
                         <NavLink to={"/all-tourists-spot"}>All Tourists Spot</NavLink>
                         <NavLink to={"/add-tourists-spot"}>Add Tourists Spot</NavLink>
-                        <NavLink>My List</NavLink>
+                        <NavLink to={`/my-list/${user?.email}`}>My List</NavLink>
                     </ul>
                 </div>
                 <Link className="btn btn-ghost text-xl">Dream Tour</Link>
@@ -37,7 +38,7 @@ const Navbar = () => {
                     <NavLink>Home</NavLink>
                     <NavLink to={"/all-tourists-spot"}>All Tourists Spot</NavLink>
                     <NavLink to={"/add-tourists-spot"}>Add Tourists Spot</NavLink>
-                    <NavLink>My List</NavLink>
+                    <NavLink to={`/my-list/${user?.email}`}>My List</NavLink>
                 </ul>
             </div>
             <div className="navbar-end">
