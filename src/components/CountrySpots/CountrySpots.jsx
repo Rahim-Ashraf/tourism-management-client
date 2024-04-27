@@ -3,8 +3,7 @@ import { Link, useLoaderData } from "react-router-dom";
 
 
 const CountrySpots = () => {
-    const loadedSpots = useLoaderData()
-    console.log(loadedSpots)
+    const loadedSpots = useLoaderData();
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-10">
             {loadedSpots?.map(spots => <div key={spots._id} className="card card-compact h-full bg-base-100 shadow-xl">

@@ -4,7 +4,6 @@ import { toast } from "react-toastify";
 
 const Update = () => {
     const oldData = useLoaderData()
-    console.log(oldData)
     const {
         register,
         handleSubmit,
@@ -23,62 +22,80 @@ const Update = () => {
     }
     return (
         <div>
-            <form onSubmit={handleSubmit(onUpdateSpot)}>
-                <div>
-                    <label>image_url</label>
-                    <input defaultValue={oldData?.image_url}{...register("image_url", { required: true })} />
-                    {errors.image_url && <span>This field is required</span>}
+            <form className="card-body" onSubmit={handleSubmit(onUpdateSpot)}>
+                <div className="md:flex gap-6">
+                    <div className="form-control w-full">
+                        <label className="label">
+                            <span className="label-text">Country Name</span>
+                        </label>
+                        <input defaultValue={oldData?.country_name} className="input input-bordered" {...register("country_name", { required: true })} />
+                        {errors.tourists_spot_name && <span className="text-red-600">This field is required</span>}
+                    </div>
+                    <div className="form-control w-full">
+                        <label className="label">
+                            <span className="label-text">Tourists Spot Name</span>
+                        </label>
+                        <input defaultValue={oldData?.tourists_spot_name} className="input input-bordered"{...register("tourists_spot_name", { required: true })} />
+                        {errors.tourists_spot_name && <span className="text-red-600">This field is required</span>}
+                    </div>
+                </div>
+                <div className="md:flex gap-6">
+                    <div className="form-control w-full">
+                        <label className="label">
+                            <span className="label-text">Location</span>
+                        </label>
+                        <input defaultValue={oldData?.location} className="input input-bordered" {...register("location", { required: true })} />
+                        {errors.tourists_spot_name && <span className="text-red-600">This field is required</span>}
+                    </div>
+                    <div className="form-control w-full">
+                        <label className="label">
+                            <span className="label-text">Image URL</span>
+                        </label>
+                        <input defaultValue={oldData?.image_url} className="input input-bordered" {...register("image_url", { required: true })} />
+                        {errors.image_url && <span className="text-red-600">This field is required</span>}
+                    </div>
+                </div>
+                <div className="md:flex gap-6">
+                    <div className="form-control w-full">
+                        <label className="label">
+                            <span className="label-text">Seasonality</span>
+                        </label>
+                        <input defaultValue={oldData?.seasonality} className="input input-bordered" {...register("seasonality", { required: true })} />
+                        {errors.tourists_spot_name && <span className="text-red-600">This field is required</span>}
+                    </div>
+                    <div className="form-control w-full">
+                        <label className="label">
+                            <span className="label-text">Travel Time</span>
+                        </label>
+                        <input defaultValue={oldData?.travel_time} className="input input-bordered" {...register("travel_time", { required: true })} />
+                        {errors.tourists_spot_name && <span className="text-red-600">This field is required</span>}
+                    </div>
+                </div>
+                <div className="md:flex gap-6">
+                    <div className="form-control w-full">
+                        <label className="label">
+                            <span className="label-text">Total Visitors Per Year</span>
+                        </label>
+                        <input defaultValue={oldData?.total_visitors_per_year} className="input input-bordered" {...register("total_visitors_per_year", { required: true })} />
+                        {errors.tourists_spot_name && <span className="text-red-600">This field is required</span>}
+                    </div>
+                    <div className="form-control w-full">
+                        <label className="label">
+                            <span className="label-text">Average Cost</span>
+                        </label>
+                        <input defaultValue={oldData?.average_cost} className="input input-bordered" {...register("average_cost", { required: true })} />
+                        {errors.tourists_spot_name && <span className="text-red-600">This field is required</span>}
+                    </div>
+                </div>
+                <div className="form-control w-full">
+                    <label className="label">
+                        <span className="label-text">Short Description</span>
+                    </label>
+                    <input defaultValue={oldData?.short_description} className="input input-bordered" {...register("short_description", { required: true })} />
+                    {errors.tourists_spot_name && <span className="text-red-600">This field is required</span>}
                 </div>
                 <br />
-                <div>
-                    <label>tourists_spot_name</label>
-                    <input defaultValue={oldData?.tourists_spot_name} {...register("tourists_spot_name", { required: true })} />
-                    {errors.tourists_spot_name && <span>This field is required</span>}
-                </div>
-                <br />
-                <div>
-                    <label>country_Name</label>
-                    <input defaultValue={oldData?.country_Name} {...register("country_Name", { required: true })} />
-                    {errors.tourists_spot_name && <span>This field is required</span>}
-                </div>
-                <br />
-                <div>
-                    <label>location</label>
-                    <input defaultValue={oldData?.location} {...register("location", { required: true })} />
-                    {errors.tourists_spot_name && <span>This field is required</span>}
-                </div>
-                <br />
-                <div>
-                    <label>short_description</label>
-                    <input defaultValue={oldData?.short_description} {...register("short_description", { required: true })} />
-                    {errors.tourists_spot_name && <span>This field is required</span>}
-                </div>
-                <br />
-                <div>
-                    <label>average_cost</label>
-                    <input defaultValue={oldData?.average_cost} {...register("average_cost", { required: true })} />
-                    {errors.tourists_spot_name && <span>This field is required</span>}
-                </div>
-                <br />
-                <div>
-                    <label>seasonality</label>
-                    <input defaultValue={oldData?.seasonality} {...register("seasonality", { required: true })} />
-                    {errors.tourists_spot_name && <span>This field is required</span>}
-                </div>
-                <br />
-                <div>
-                    <label>travel_time</label>
-                    <input defaultValue={oldData?.travel_time} {...register("travel_time", { required: true })} />
-                    {errors.tourists_spot_name && <span>This field is required</span>}
-                </div>
-                <br />
-                <div>
-                    <label>total_visitors_per_year</label>
-                    <input defaultValue={oldData?.total_visitors_per_year} {...register("total_visitors_per_year", { required: true })} />
-                    {errors.tourists_spot_name && <span>This field is required</span>}
-                </div>
-                <br />
-                <input type="submit" value={"Update"} />
+                <input className="btn btn-primary" type="submit" value={"Update"} />
             </form>
         </div>
     );
