@@ -5,27 +5,31 @@ import { createContext, useEffect, useState } from "react";
 export const AuthContext = createContext(null)
 
 const Provider = ({ children }) => {
+    const [loading, setLoading] = useState(true)
     const auth = getAuth(app);
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
     const [user, setUser] = useState(null)
     const emailRegister = (email, password) => {
+        setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
     const emailLogin = (email, password) => {
+        setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
     const googleLogin = () => {
-        // setLoader(true);
+        setLoading(true)
         return signInWithPopup(auth, googleProvider)
     }
     const githubLogin = () => {
-        // setLoader(true);
+        setLoading(true)
         return signInWithPopup(auth, githubProvider)
     }
 
     const logOut = () => {
+        setLoading(true)
         signOut(auth).then(() => {
             // Sign-out successful.
         }).catch((error) => {
@@ -34,6 +38,7 @@ const Provider = ({ children }) => {
     }
 
     const updateUser = (name, photoURL) => {
+        setLoading(true)
         return updateProfile(auth.currentUser, {
             displayName: name, photoURL: photoURL
         })
@@ -42,10 +47,12 @@ const Provider = ({ children }) => {
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
+            setLoading(false)
         });
         return () => {
             unSubscribe()
         }
+
     }, [])
 
     const data = {
@@ -55,7 +62,8 @@ const Provider = ({ children }) => {
         githubLogin,
         user,
         logOut,
-        updateUser
+        updateUser,
+        loading
     }
     return (
         <div>

@@ -1,8 +1,16 @@
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { register } from 'swiper/element/bundle';
 
 
 const Home = () => {
+    const [countriesData, setCountriesData] = useState([])
     register();
+    useEffect(() => {
+        fetch("http://localhost:5000/tourists-countries")
+            .then(res => res.json())
+            .then(data => setCountriesData(data))
+    }, []);
 
     return (
         <div>
@@ -14,7 +22,23 @@ const Home = () => {
                     <swiper-slide><img className=" rounded-xl" src="https://i.ibb.co/cFx6Fpt/sunderbans.jpg" alt="" /></swiper-slide>
                 </swiper-container>
             </section>
-            <section>Tourists Spots</section>
+            <section>
+                Tourists Spots
+            </section>
+            <section className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 md:gap-10'>
+                {
+                    countriesData.map(countryData => <Link key={countryData._id} to={"/df"}>
+                        <div className="card card-compact bg-base-100 shadow-xl h-full">
+                            <figure><img src={countryData.image_url} alt={countryData.name} /></figure>
+                            <div className="card-body">
+                                <h2 className="card-title">{countryData.country_name}</h2>
+                                <p>{countryData.short_description}</p>
+                            </div>
+                        </div>
+                    </Link>)
+
+                }
+            </section>
         </div>
     );
 };
