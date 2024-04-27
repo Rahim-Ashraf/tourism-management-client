@@ -1,17 +1,20 @@
-import { useContext } from "react";
+// import { useContext } from "react";
 import { useForm } from "react-hook-form"
-import { AuthContext } from "../../Provider/Provider";
+// import { AuthContext } from "../../Provider/Provider";
+import { useLoaderData } from "react-router-dom";
 
-const AddTouristsSpot = () => {
-    const { user } = useContext(AuthContext)
+const Update = () => {
+    const oldData = useLoaderData()
+    console.log(oldData)
+    // const { user } = useContext(AuthContext)
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm()
-    const onAddSpot = (data) => {
-        fetch("https://tourism-management-server-ecru.vercel.app/add-tourists-spot", {
-            method: "POST",
+    const onUpdateSpot = (data) => {
+        fetch(`http://localhost:5000/update/${oldData?._id}`, {
+            method: "PUT",
             headers: {
                 "content-type": "application/json"
             },
@@ -22,76 +25,65 @@ const AddTouristsSpot = () => {
     }
     return (
         <div>
-            <form onSubmit={handleSubmit(onAddSpot)}>
+            <form onSubmit={handleSubmit(onUpdateSpot)}>
                 <div>
                     <label>image_url</label>
-                    <input {...register("image_url", { required: true })} />
+                    <input defaultValue={oldData?.image_url}{...register("image_url", { required: true })} />
                     {errors.image_url && <span>This field is required</span>}
                 </div>
                 <br />
                 <div>
                     <label>tourists_spot_name</label>
-                    <input {...register("tourists_spot_name", { required: true })} />
+                    <input defaultValue={oldData?.tourists_spot_name} {...register("tourists_spot_name", { required: true })} />
                     {errors.tourists_spot_name && <span>This field is required</span>}
                 </div>
                 <br />
                 <div>
                     <label>country_Name</label>
-                    <input {...register("country_Name", { required: true })} />
+                    <input defaultValue={oldData?.country_Name} {...register("country_Name", { required: true })} />
                     {errors.tourists_spot_name && <span>This field is required</span>}
                 </div>
                 <br />
                 <div>
                     <label>location</label>
-                    <input {...register("location", { required: true })} />
+                    <input defaultValue={oldData?.location} {...register("location", { required: true })} />
                     {errors.tourists_spot_name && <span>This field is required</span>}
                 </div>
                 <br />
                 <div>
                     <label>short_description</label>
-                    <input {...register("short_description", { required: true })} />
+                    <input defaultValue={oldData?.short_description} {...register("short_description", { required: true })} />
                     {errors.tourists_spot_name && <span>This field is required</span>}
                 </div>
                 <br />
                 <div>
                     <label>average_cost</label>
-                    <input {...register("average_cost", { required: true })} />
+                    <input defaultValue={oldData?.average_cost} {...register("average_cost", { required: true })} />
                     {errors.tourists_spot_name && <span>This field is required</span>}
                 </div>
                 <br />
                 <div>
                     <label>seasonality</label>
-                    <input {...register("seasonality", { required: true })} />
+                    <input defaultValue={oldData?.seasonality} {...register("seasonality", { required: true })} />
                     {errors.tourists_spot_name && <span>This field is required</span>}
                 </div>
                 <br />
                 <div>
                     <label>travel_time</label>
-                    <input {...register("travel_time", { required: true })} />
+                    <input defaultValue={oldData?.travel_time} {...register("travel_time", { required: true })} />
                     {errors.tourists_spot_name && <span>This field is required</span>}
                 </div>
                 <br />
                 <div>
                     <label>total_visitors_per_year</label>
-                    <input {...register("total_visitors_per_year", { required: true })} />
+                    <input defaultValue={oldData?.total_visitors_per_year} {...register("total_visitors_per_year", { required: true })} />
                     {errors.tourists_spot_name && <span>This field is required</span>}
                 </div>
                 <br />
-                <div>
-                    <label>user_email</label>
-                    <input defaultValue={user?.email} {...register("user_email", { required: true })} />
-                    {errors.tourists_spot_name && <span>This field is required</span>}
-                </div>
-                <br />
-                <div>
-                    <label>user_name</label>
-                    <input defaultValue={user?.displayName} {...register("user_name", { required: true })} />
-                    {errors.tourists_spot_name && <span>This field is required</span>}
-                </div>
-                <input type="submit" value={"Add"} />
+                <input type="submit" value={"Update"} />
             </form>
         </div>
     );
 };
 
-export default AddTouristsSpot;
+export default Update;

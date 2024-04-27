@@ -25,7 +25,7 @@ const MyList = () => {
                             <th>{touristsSpot.country_Name}</th>
                             <td>{touristsSpot.location}</td>
                             <td>{touristsSpot.tourists_spot_name}</td>
-                            <td><Link to={"/"} className="btn btn-warning">Update</Link></td>
+                            <td><Link to={`/update/${touristsSpot?._id}`} className="btn btn-warning">Update</Link></td>
                             <td><button className="btn btn-error">Delete</button></td>
                         </tr>)
                     }

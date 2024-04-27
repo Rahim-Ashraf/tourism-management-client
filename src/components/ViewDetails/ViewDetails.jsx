@@ -5,7 +5,6 @@ import { useLoaderData } from "react-router-dom";
 const ViewDetails = () => {
     const touristsSpotData = useLoaderData()
     const { image_url, country_Name, average_cost, location, seasonality, short_description, total_visitors_per_year, tourists_spot_name, travel_time, } = touristsSpotData;
-    console.log(touristsSpotData)
     return (
         <div className="card card-side shadow-xl">
             <div className="lg:flex p-4">

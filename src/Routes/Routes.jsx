@@ -9,6 +9,7 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import AllTouristsSpot from "../components/AllTouristsSpot/AllTouristsSpot";
 import ViewDetails from "../components/ViewDetails/ViewDetails";
 import MyList from "../components/MyList/MyList";
+import Update from "../components/Update/Update";
 
 
 const router = createBrowserRouter([
@@ -36,17 +37,22 @@ const router = createBrowserRouter([
             {
                 path: "/all-tourists-spot",
                 element: <AllTouristsSpot></AllTouristsSpot>,
-                loader: () => fetch("http://localhost:5000/all-tourists-spot")
+                loader: () => fetch("https://tourism-management-server-ecru.vercel.app/all-tourists-spot")
             },
             {
                 path: "/view-details/:id",
                 element: <PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/tourists-spot/${params.id}`)
+                loader: ({ params }) => fetch(`https://tourism-management-server-ecru.vercel.app/tourists-spot/${params.id}`)
             },
             {
                 path: "/my-list/:email",
                 element: <PrivateRoute><MyList></MyList></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/individual-tourists-spot/${params.email}`)
+                loader: ({ params }) => fetch(`https://tourism-management-server-ecru.vercel.app/individual-tourists-spot/${params.email}`)
+            },
+            {
+                path:"/update/:id",
+                element:<PrivateRoute><Update></Update></PrivateRoute>,
+                loader: ({params})=>fetch(`http://localhost:5000/tourists-spot/${params.id}`)
             }
         ]
     },

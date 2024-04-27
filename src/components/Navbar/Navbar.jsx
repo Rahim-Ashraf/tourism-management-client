@@ -6,7 +6,6 @@ import { AuthContext } from "../../Provider/Provider";
 const Navbar = () => {
     const [hoverEffect, setHoverEffect] = useState(false);
     const { user, logOut } = useContext(AuthContext);
-    console.log(user)
     const handleLogOut = () => {
         logOut()
     }
@@ -31,7 +30,7 @@ const Navbar = () => {
                         <NavLink to={`/my-list/${user?.email}`}>My List</NavLink>
                     </ul>
                 </div>
-                <Link className="btn btn-ghost text-xl">Dream Tour</Link>
+                <Link to={"/"} className="btn btn-ghost text-xl">Dream Tour</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 gap-4">
@@ -42,7 +41,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                {user ? <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className="relative mr-16">
+                {user ? <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className="relative mr-16 z-10">
                     <div className="avatar cursor-pointer">
                         <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                             <img src={user?.photoURL} />
