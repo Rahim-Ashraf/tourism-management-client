@@ -1,9 +1,42 @@
+import { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 const MyList = () => {
-    const individualTouristsSpot = useLoaderData()
-    // const { country_Name, tourists_spot_name, location } = individualTouristsSpot
+    const loadedData = useLoaderData();
+    const [individualTouristsSpot, setIndividualTouristsSpot] = useState(loadedData);
+    const handleDelete = (id) => {
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                fetch(`http://localhost:5000/delete/${id}`, {
+                    method: "DELETE"
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                        if (data.deletedCount > 0) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                            });
+                            setIndividualTouristsSpot(individualTouristsSpot.filter(touristsSpot => touristsSpot._id !== id))
+                        }
+                    })
+            }
+        });
+    }
     return (
         <div className="overflow-x-auto">
             <table className="table">
@@ -20,13 +53,13 @@ const MyList = () => {
                 </thead>
                 <tbody>
                     {
-                        individualTouristsSpot.map((touristsSpot,idx) => <tr key={touristsSpot._id}>
-                            <th>{idx+1}</th>
+                        individualTouristsSpot?.map((touristsSpot, idx) => <tr key={touristsSpot._id}>
+                            <th>{idx + 1}</th>
                             <th>{touristsSpot.country_Name}</th>
                             <td>{touristsSpot.location}</td>
                             <td>{touristsSpot.tourists_spot_name}</td>
-                            <td><Link to={`/update/${touristsSpot?._id}`} className="btn btn-warning">Update</Link></td>
-                            <td><button className="btn btn-error">Delete</button></td>
+                            <td><Link to={`/update/${touristsSpot._id}`} className="btn btn-warning">Update</Link></td>
+                            <td><button onClick={() => handleDelete(touristsSpot._id)} className="btn btn-error">Delete</button></td>
                         </tr>)
                     }
                 </tbody>

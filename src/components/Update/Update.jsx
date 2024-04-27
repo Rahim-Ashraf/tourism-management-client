@@ -1,12 +1,10 @@
-// import { useContext } from "react";
 import { useForm } from "react-hook-form"
-// import { AuthContext } from "../../Provider/Provider";
 import { useLoaderData } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Update = () => {
     const oldData = useLoaderData()
     console.log(oldData)
-    // const { user } = useContext(AuthContext)
     const {
         register,
         handleSubmit,
@@ -21,7 +19,7 @@ const Update = () => {
             body: JSON.stringify(data)
         })
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => toast.success("Updated successfully"))
     }
     return (
         <div>
