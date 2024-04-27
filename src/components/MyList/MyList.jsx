@@ -18,13 +18,11 @@ const MyList = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-
                 fetch(`https://tourism-management-server-ecru.vercel.app/delete/${id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data)
                         if (data.deletedCount > 0) {
                             Swal.fire({
                                 title: "Deleted!",

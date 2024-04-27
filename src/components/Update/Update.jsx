@@ -18,7 +18,11 @@ const Update = () => {
             body: JSON.stringify(data)
         })
             .then(res => res.json())
-            .then(data => toast.success("Updated successfully"))
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    toast.success("Updated successfully")
+                }
+            })
     }
     return (
         <div>
@@ -29,7 +33,7 @@ const Update = () => {
                             <span className="label-text">Country Name</span>
                         </label>
                         <input defaultValue={oldData?.country_name} className="input input-bordered" {...register("country_name", { required: true })} />
-                        {errors.tourists_spot_name && <span className="text-red-600">This field is required</span>}
+                        {errors.country_name && <span className="text-red-600">This field is required</span>}
                     </div>
                     <div className="form-control w-full">
                         <label className="label">
@@ -45,7 +49,7 @@ const Update = () => {
                             <span className="label-text">Location</span>
                         </label>
                         <input defaultValue={oldData?.location} className="input input-bordered" {...register("location", { required: true })} />
-                        {errors.tourists_spot_name && <span className="text-red-600">This field is required</span>}
+                        {errors.location && <span className="text-red-600">This field is required</span>}
                     </div>
                     <div className="form-control w-full">
                         <label className="label">
@@ -61,14 +65,14 @@ const Update = () => {
                             <span className="label-text">Seasonality</span>
                         </label>
                         <input defaultValue={oldData?.seasonality} className="input input-bordered" {...register("seasonality", { required: true })} />
-                        {errors.tourists_spot_name && <span className="text-red-600">This field is required</span>}
+                        {errors.seasonality && <span className="text-red-600">This field is required</span>}
                     </div>
                     <div className="form-control w-full">
                         <label className="label">
                             <span className="label-text">Travel Time</span>
                         </label>
                         <input defaultValue={oldData?.travel_time} className="input input-bordered" {...register("travel_time", { required: true })} />
-                        {errors.tourists_spot_name && <span className="text-red-600">This field is required</span>}
+                        {errors.travel_time && <span className="text-red-600">This field is required</span>}
                     </div>
                 </div>
                 <div className="md:flex gap-6">
@@ -77,14 +81,14 @@ const Update = () => {
                             <span className="label-text">Total Visitors Per Year</span>
                         </label>
                         <input defaultValue={oldData?.total_visitors_per_year} className="input input-bordered" {...register("total_visitors_per_year", { required: true })} />
-                        {errors.tourists_spot_name && <span className="text-red-600">This field is required</span>}
+                        {errors.total_visitors_per_year && <span className="text-red-600">This field is required</span>}
                     </div>
                     <div className="form-control w-full">
                         <label className="label">
                             <span className="label-text">Average Cost</span>
                         </label>
                         <input defaultValue={oldData?.average_cost} className="input input-bordered" {...register("average_cost", { required: true })} />
-                        {errors.tourists_spot_name && <span className="text-red-600">This field is required</span>}
+                        {errors.average_cost && <span className="text-red-600">This field is required</span>}
                     </div>
                 </div>
                 <div className="form-control w-full">
@@ -92,7 +96,7 @@ const Update = () => {
                         <span className="label-text">Short Description</span>
                     </label>
                     <input defaultValue={oldData?.short_description} className="input input-bordered" {...register("short_description", { required: true })} />
-                    {errors.tourists_spot_name && <span className="text-red-600">This field is required</span>}
+                    {errors.short_description && <span className="text-red-600">This field is required</span>}
                 </div>
                 <br />
                 <input className="btn btn-primary" type="submit" value={"Update"} />
