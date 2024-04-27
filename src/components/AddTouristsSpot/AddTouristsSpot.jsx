@@ -7,6 +7,7 @@ const AddTouristsSpot = () => {
     const {
         register,
         handleSubmit,
+        reset,
         formState: { errors },
     } = useForm()
     const onAddSpot = (data) => {
@@ -19,6 +20,7 @@ const AddTouristsSpot = () => {
         })
             .then(res => res.json())
             .then(data => console.log(data))
+        reset();
     }
     return (
         <div>
@@ -36,8 +38,8 @@ const AddTouristsSpot = () => {
                 </div>
                 <br />
                 <div>
-                    <label>country_Name</label>
-                    <input {...register("country_Name", { required: true })} />
+                    <label>country_name</label>
+                    <input {...register("country_name", { required: true })} />
                     {errors.tourists_spot_name && <span>This field is required</span>}
                 </div>
                 <br />

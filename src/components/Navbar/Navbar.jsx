@@ -48,7 +48,7 @@ const Navbar = () => {
                         </div>
                     </div>
                     <div className={hoverEffect?"block absolute w-28":"hidden absolute w-28"}>
-                        <p className="bg-gray-700 rounded p-1">{user?.displayName}</p>
+                        <p className="text-primary font-bold rounded p-1">{user?.displayName}</p>
                         <button onClick={handleLogOut} className="btn mt-2">Log out</button>
                     </div>
                 </div>

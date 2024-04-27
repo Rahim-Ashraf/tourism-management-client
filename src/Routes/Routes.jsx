@@ -10,6 +10,7 @@ import AllTouristsSpot from "../components/AllTouristsSpot/AllTouristsSpot";
 import ViewDetails from "../components/ViewDetails/ViewDetails";
 import MyList from "../components/MyList/MyList";
 import Update from "../components/Update/Update";
+import CountrySpots from "../components/CountrySpots/CountrySpots";
 
 
 const router = createBrowserRouter([
@@ -50,9 +51,14 @@ const router = createBrowserRouter([
                 loader: ({ params }) => fetch(`https://tourism-management-server-ecru.vercel.app/individual-tourists-spot/${params.email}`)
             },
             {
-                path:"/update/:id",
-                element:<PrivateRoute><Update></Update></PrivateRoute>,
-                loader: ({params})=>fetch(`http://localhost:5000/tourists-spot/${params.id}`)
+                path: "/update/:id",
+                element: <PrivateRoute><Update></Update></PrivateRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/tourists-spot/${params.id}`)
+            },
+            {
+                path: "/specific-country-spots/:name",
+                element: <CountrySpots></CountrySpots>,
+                loader: ({ params }) => fetch(`http://localhost:5000/specific-country-spots/${params.name}`)
             }
         ]
     },

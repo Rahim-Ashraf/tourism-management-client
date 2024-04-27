@@ -27,7 +27,7 @@ const Home = () => {
             </section>
             <section className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 md:gap-10'>
                 {
-                    countriesData.map(countryData => <Link key={countryData._id} to={"/df"}>
+                    countriesData.map(countryData => <Link key={countryData._id} to={`/specific-country-spots/${countryData.country_name}`}>
                         <div className="card card-compact bg-base-100 shadow-xl h-full">
                             <figure><img src={countryData.image_url} alt={countryData.name} /></figure>
                             <div className="card-body">
