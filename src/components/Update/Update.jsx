@@ -10,7 +10,7 @@ const Update = () => {
         formState: { errors },
     } = useForm()
     const onUpdateSpot = (data) => {
-        fetch(`http://localhost:5000/update/${oldData?._id}`, {
+        fetch(`https://tourism-management-server-ecru.vercel.app/update/${oldData?._id}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json"

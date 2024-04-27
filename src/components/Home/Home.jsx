@@ -7,7 +7,7 @@ const Home = () => {
     const [countriesData, setCountriesData] = useState([])
     register();
     useEffect(() => {
-        fetch("http://localhost:5000/tourists-countries")
+        fetch("https://tourism-management-server-ecru.vercel.app/tourists-countries")
             .then(res => res.json())
             .then(data => setCountriesData(data))
     }, []);
@@ -29,7 +29,7 @@ const Home = () => {
                 {
                     countriesData.map(countryData => <Link key={countryData._id} to={`/specific-country-spots/${countryData.country_name}`}>
                         <div className="card card-compact bg-base-100 shadow-xl h-full">
-                            <figure><img src={countryData.image_url} alt={countryData.name} /></figure>
+                            <figure className='shadow-xl'><img src={countryData.image_url} alt={countryData.name} /></figure>
                             <div className="card-body">
                                 <h2 className="card-title">{countryData.country_name}</h2>
                                 <p>{countryData.short_description}</p>

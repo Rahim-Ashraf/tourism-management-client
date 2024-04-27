@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const TouristsSpotCard = ({ touristsSpotData }) => {
     const { _id, image_url, tourists_spot_name, average_cost, tota_visitors_per_year, travel_time, seasonality } = touristsSpotData;
     return (
-        <div className="card card-compact w-96 bg-base-100 shadow-xl">
+        <div className="card card-compact w-96 bg-base-100 shadow-2xl">
             <figure><img src={image_url} alt={tourists_spot_name} /></figure>
             <div className="card-body">
                 <h2 className="card-title">{tourists_spot_name}</h2>

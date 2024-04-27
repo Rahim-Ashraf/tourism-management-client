@@ -53,12 +53,12 @@ const router = createBrowserRouter([
             {
                 path: "/update/:id",
                 element: <PrivateRoute><Update></Update></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/tourists-spot/${params.id}`)
+                loader: ({ params }) => fetch(`https://tourism-management-server-ecru.vercel.app/tourists-spot/${params.id}`)
             },
             {
                 path: "/specific-country-spots/:name",
                 element: <CountrySpots></CountrySpots>,
-                loader: ({ params }) => fetch(`http://localhost:5000/specific-country-spots/${params.name}`)
+                loader: ({ params }) => fetch(`https://tourism-management-server-ecru.vercel.app/specific-country-spots/${params.name}`)
             }
         ]
     },
