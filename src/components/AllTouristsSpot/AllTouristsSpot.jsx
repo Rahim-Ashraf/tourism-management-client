@@ -30,8 +30,6 @@ const AllTouristsSpot = () => {
                 {touristsSpotData?.map(touristsSpotData => <TouristsSpotCard
                     key={touristsSpotData._id} touristsSpotData={touristsSpotData}>
                 </TouristsSpotCard>)}
-            </div>: <div className="w-full flex justify-center">
-                <span className="loading loading-spinner loading-lg flex justify-center items-center h-screen"></span>
             </div>
         </div>
     );
