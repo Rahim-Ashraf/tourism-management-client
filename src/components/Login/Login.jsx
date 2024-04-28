@@ -11,11 +11,10 @@ const Login = () => {
     const { emailLogin, googleLogin, githubLogin } = useContext(AuthContext)
     const notifyLoginSuccess = () => toast.success("Loged in successfully");
     const notifyLoginError = () => toast.error("Please provide valid email and password");
-    const navigate = useNavigate()
-    const location = useLocation()
+    const navigate = useNavigate();
+    const location = useLocation();
     const handleEmailLogin = e => {
         e.preventDefault();
-
         const email = e.target.email.value;
         const password = e.target.password.value;
         emailLogin(email, password)
@@ -76,11 +75,9 @@ const Login = () => {
                     </div>
                 </form>
                 <div>
-                    <p className="flex gap-2">
-                        <span>Login with</span> <button onClick={handleGoogleLogin} className="text-blue-600 font-bold flex items-center"><FcGoogle /><span>oogle</span></button>
-                    </p>
-                    <p className="flex gap-2">
-                        <span>Login with</span> <button onClick={handleGithubLogin} className="text-blue-600 font-bold flex items-center"><FaGithub /><span>Github</span></button>
+                    <p className="flex gap-4">
+                        <span>Login with</span> <button onClick={handleGoogleLogin} className="text-4xl"><FcGoogle /></button>
+                        <button onClick={handleGithubLogin} className="text-blue-600 text-4xl"><FaGithub /></button>
                     </p>
                 </div>
                 <div>

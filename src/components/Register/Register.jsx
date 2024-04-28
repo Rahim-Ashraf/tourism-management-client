@@ -13,13 +13,11 @@ const Register = () => {
     const [registerError, setRegisterError] = useState("")
     const handleEmailRegister = (e) => {
         e.preventDefault();
-        // setRegisterError("");
+        setRegisterError("");
         const email = e.target.email.value;
         const password = e.target.password.value;
         const name = e.target.name.value;
         const photoURL = e.target.photoURL.value;
-
-
 
         if (password.length < 6) {
             setRegisterError("password should be atlest 6 charecter");
@@ -37,12 +35,11 @@ const Register = () => {
                 updateUser(name, photoURL)
                     .then(result => console.log("user updated"))
                     .catch(error => console.log("user not updated"))
-                const registerSuccess = () => toast.success("Registerd successfully");
-                registerSuccess()
+                toast.success("Registerd successfully");
                 navigate("/")
             })
             .catch(err => {
-                const registerError = () => toast.error("Registration faild");
+                const registerError = () => toast.error("Emai already exist");
                 registerError()
             })
     }

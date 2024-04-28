@@ -20,7 +20,7 @@ const Navbar = () => {
     const [theme, setTheme] = useState(true)
     const handleThemeControl = () => {
         theme ? document.querySelector('html').setAttribute('data-theme', "dark") : document.querySelector('html').setAttribute('data-theme', "light");
-        
+
         setTheme(!theme)
     }
     return (
@@ -31,20 +31,28 @@ const Navbar = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </div>
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[10] p-2 shadow bg-base-100 rounded-box w-52">
-                        <NavLink>Home</NavLink>
-                        <NavLink to={"/all-tourists-spot"}>All Tourists Spot</NavLink>
-                        <NavLink to={"/add-tourists-spot"}>Add Tourists Spot</NavLink>
-                        <NavLink to={`/my-list/${user?.email}`}>My List</NavLink>
+                        <NavLink to={"/"} className={({ isActive }) =>
+                            isActive ? "btn btn-active" : "btn"}>Home</NavLink>
+                        <NavLink to={"/all-tourists-spot"} className={({ isActive }) =>
+                            isActive ? "btn btn-active" : "btn"}>All Tourists Spot</NavLink>
+                        <NavLink to={"/add-tourists-spot"} className={({ isActive }) =>
+                            isActive ? "btn btn-active" : "btn"}>Add Tourists Spot</NavLink>
+                        <NavLink to={`/my-list/${user?.email}`} className={({ isActive }) =>
+                            isActive ? "btn btn-active" : "btn"}>My List</NavLink>
                     </ul>
                 </div>
                 <Link to={"/"} className="btn btn-ghost text-xl">Dream Tour</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 gap-4">
-                    <NavLink>Home</NavLink>
-                    <NavLink to={"/all-tourists-spot"}>All Tourists Spot</NavLink>
-                    <NavLink to={"/add-tourists-spot"}>Add Tourists Spot</NavLink>
-                    <NavLink to={`/my-list/${user?.email}`}>My List</NavLink>
+                    <NavLink to={"/"} className={({ isActive }) =>
+                        isActive ? "btn btn-active" : "btn"}>Home</NavLink>
+                    <NavLink to={"/all-tourists-spot"} className={({ isActive }) =>
+                        isActive ? "btn btn-active" : "btn"}>All Tourists Spot</NavLink>
+                    <NavLink to={"/add-tourists-spot"} className={({ isActive }) =>
+                        isActive ? "btn btn-active" : "btn"}>Add Tourists Spot</NavLink>
+                    <NavLink to={`/my-list/${user?.email}`} className={({ isActive }) =>
+                        isActive ? "btn btn-active" : "btn"}>My List</NavLink>
                 </ul>
             </div>
             <div className="navbar-end">
