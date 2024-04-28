@@ -13,7 +13,7 @@ const PrivateRoute = ({ children }) => {
                     <span className="loading loading-spinner loading-lg flex justify-center items-center h-screen"></span>
                 </div> :
                     user ? children :
-                        <Navigate state={location.pathname} to={"/login"}></Navigate>
+                        <Navigate to={"/login"}></Navigate>
             }
         </div>
     );

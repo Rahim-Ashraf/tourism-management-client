@@ -1,5 +1,6 @@
 import { CiLocationOn } from "react-icons/ci";
 import { useLoaderData } from "react-router-dom";
+import { Typewriter } from 'react-simple-typewriter'
 
 
 const ViewDetails = () => {
@@ -12,13 +13,18 @@ const ViewDetails = () => {
                     <img className="rounded-lg" src={image_url} alt="Movie" />
                 </div>
                 <div className="card-body w-full">
-                    <h2 className="text-4xl font-bold mb-4">{country_name}</h2>
-                    <div className="flex justify-between">
-                        <div className="flex gap-2 items-center text-xl font-bold text-cyan-600">
-                            <CiLocationOn />
-                            <p>{location}</p>
-                        </div>
-                        <span className="text-lg font-bold text-cyan-600">tourists spot name: {tourists_spot_name}</span>
+                    <h2 className="text-4xl font-bold mb-4"><Typewriter
+                        words={[country_name, tourists_spot_name]}
+                        loop
+                        cursor
+                        cursorStyle='_'
+                        typeSpeed={100}
+                        deleteSpeed={70}
+                        delaySpeed={2000}
+                    /></h2>
+                    <div className="flex gap-2 items-center text-xl font-bold text-cyan-600">
+                        <CiLocationOn />
+                        <p>{location}</p>
                     </div>
                     <div className="flex justify-between">
                         <span><span className="font-bold">Total visitors per year: </span>{total_visitors_per_year}</span>

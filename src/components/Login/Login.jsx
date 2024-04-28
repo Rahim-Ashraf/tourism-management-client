@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { FaGithub } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Provider/Provider';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -12,7 +12,6 @@ const Login = () => {
     const notifyLoginSuccess = () => toast.success("Loged in successfully");
     const notifyLoginError = () => toast.error("Please provide valid email and password");
     const navigate = useNavigate();
-    const location = useLocation();
     const handleEmailLogin = e => {
         e.preventDefault();
         const email = e.target.email.value;
@@ -20,7 +19,7 @@ const Login = () => {
         emailLogin(email, password)
             .then(result => {
                 console.log("sahdfgkasjdfk")
-                navigate(location?.state ? location.state : "/")
+                navigate("/")
                 notifyLoginSuccess()
 
             })
@@ -33,7 +32,7 @@ const Login = () => {
         googleLogin()
             .then(result => {
                 console.log(result)
-                navigate(location?.state ? location.state : "/")
+                navigate("/")
                 notifyLoginSuccess()
             })
             .catch(error => {
@@ -46,7 +45,7 @@ const Login = () => {
     const handleGithubLogin = () => {
         githubLogin()
             .then(res => {
-                navigate(location?.state ? location.state : "/")
+                navigate("/")
                 notifyLoginSuccess()
             })
             .catch(err => {
