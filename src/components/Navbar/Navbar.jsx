@@ -35,10 +35,12 @@ const Navbar = () => {
                             isActive ? "btn btn-active" : "btn"}>Home</NavLink>
                         <NavLink to={"/all-tourists-spot"} className={({ isActive }) =>
                             isActive ? "btn btn-active" : "btn"}>All Tourists Spot</NavLink>
-                        <NavLink to={"/add-tourists-spot"} className={({ isActive }) =>
-                            isActive ? "btn btn-active" : "btn"}>Add Tourists Spot</NavLink>
-                        <NavLink to={`/my-list/${user?.email}`} className={({ isActive }) =>
-                            isActive ? "btn btn-active" : "btn"}>My List</NavLink>
+                        {user && <div>
+                            <NavLink to={"/add-tourists-spot"} className={({ isActive }) =>
+                                isActive ? "btn btn-active w-full" : "btn w-full"}>Add Tourists Spot</NavLink>
+                            <NavLink to={`/my-list/${user?.email}`} className={({ isActive }) =>
+                                isActive ? "btn btn-active w-full" : "btn w-full"}>My List</NavLink>
+                        </div>}
                     </ul>
                 </div>
                 <Link to={"/"} className="btn btn-ghost text-xl">Dream Tour</Link>
@@ -49,10 +51,12 @@ const Navbar = () => {
                         isActive ? "btn btn-active" : "btn"}>Home</NavLink>
                     <NavLink to={"/all-tourists-spot"} className={({ isActive }) =>
                         isActive ? "btn btn-active" : "btn"}>All Tourists Spot</NavLink>
-                    <NavLink to={"/add-tourists-spot"} className={({ isActive }) =>
-                        isActive ? "btn btn-active" : "btn"}>Add Tourists Spot</NavLink>
-                    <NavLink to={`/my-list/${user?.email}`} className={({ isActive }) =>
-                        isActive ? "btn btn-active" : "btn"}>My List</NavLink>
+                    {user && <div>
+                        <NavLink to={"/add-tourists-spot"} className={({ isActive }) =>
+                            isActive ? "btn btn-active mr-4" : "btn mr-4"}>Add Tourists Spot</NavLink>
+                        <NavLink to={`/my-list/${user?.email}`} className={({ isActive }) =>
+                            isActive ? "btn btn-active" : "btn"}>My List</NavLink>
+                    </div>}
                 </ul>
             </div>
             <div className="navbar-end">
