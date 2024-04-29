@@ -1,6 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import TouristsSpotCard from "../TouristsSpotCard/TouristsSpotCard";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 
 const AllTouristsSpot = () => {
@@ -8,12 +8,10 @@ const AllTouristsSpot = () => {
     const [touristsSpotData, setTouristsSpotData] = useState(allTouristsSpotData);
     const [render, setRender] = useState(true)
     const handleSelect = () => {
-        setRender(!render)
-    }
-    useEffect(() => {
         const sortedData = allTouristsSpotData.sort(function (a, b) { return b.average_cost - a.average_cost });
         setTouristsSpotData(sortedData)
-    }, [render])
+        setRender(!render)
+    }
 
     return (
         <div>
