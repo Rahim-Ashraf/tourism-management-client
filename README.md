@@ -8,9 +8,5 @@
 *   You can Update your Tourist spot data
 *   This website also contain privete route
 
-### Selected Category
-* Southeast Asia
-
-## npm packege names that used in the website
-*   React-simple-typewriter
-*   React-tooltip
+### Technologies used:
+React, Tailwind CSS, Firebase, Express JS, MongoDB
