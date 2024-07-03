@@ -1,5 +1,5 @@
 ## Website name: Modern House
-## live link: https://dream-tour-22079.web.app
+## live link: https://dream-tour1.netlify.app
 ### Features:
 *   This wbsite is a tourist managment website
 *   This wbsite have firebase login and registration auth
